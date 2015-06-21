@@ -24,9 +24,9 @@ AngularJS 会记录值并对拿他和旧的值做比较。
 这就是**脏检查**机制。
 如果有某个值发生了变化，他会触发相应的change事件。
 
-当你从一个没有AngularJS的世界进入AngularJS的世界时，你会调用`$apply()`函数。而`$apply()`函数又会去调用` $digest()`。
-这里的digest做的就是基本脏检查工作。
-它可以在所有的浏览器里面按我们预想的那样工作。
+如果在 AngularJS 的范围之外修改了数据，记得调用`$apply()`函数来通知 AngularJS 更新数据。`$apply()`函数会去调用` $digest()`函数。
+因为digest用了最基础的方式进行脏检查，
+所以他能兼容所有浏览器。
 
 对比一下脏检查机制(AngularJS)和change侦听器机制(KnockoutJS and Backbone.js)吧：<br/>
 虽然脏检查看起来简单，甚至有时候效率很低（稍后会提到），他却总是可以保证代码的可读性（semantically correct）。change侦听器需要对一些奇奇怪怪的情况做特殊的处理，需要用类似依赖跟踪（dependency tracking）的方式保证代码的可读性。
